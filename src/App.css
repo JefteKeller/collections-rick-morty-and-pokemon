@@ -16,16 +16,39 @@
   color: white
 }
 
-.charTitle,
+.searchBar {
+  margin: 1rem;
+}
+
+.searchBar>input {
+  width: 40%;
+  margin-right: 0.5rem;
+
+}
+
+.charContainer {
+  width: 100%;
+}
+
 .charTitle {
-  color: white;
+  color: white !important;
 }
 
 .charList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.charList>div {
+.charCard {
+  width: 40%;
   margin: 0.5rem;
+}
+
+.ant-card-body {
+  padding: 1rem 0.1rem !important;
+}
+
+.ant-card-meta-title {
+  font-size: 10px !important
 }

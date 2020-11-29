@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { Card, Button } from "antd";
+import { Card, Button, Input } from "antd";
 import {
 	LeftCircleTwoTone,
 	RightCircleTwoTone,
@@ -16,6 +16,7 @@ const RickAndMorty = () => {
 		nextPage: "",
 	});
 	const [pageNum, setPageNum] = useState(0);
+	const [searchParam, setSearchParam] = useState("");
 
 	const { baseUrl, prevPage, nextPage } = url;
 
@@ -38,8 +39,20 @@ const RickAndMorty = () => {
 		}
 	};
 
+	const handleSearch = () => {
+		const searchText = searchParam.trim().replace(/\s/g, "+");
+		console.log(searchText);
+		setUrl({
+			...url,
+			baseUrl: `https://rickandmortyapi.com/api/character/?page=1&name=${searchText}`,
+		});
+	};
+
 	useEffect(() => {
-		axios.get(baseUrl).then(res => handleCharList(res));
+		axios
+			.get(baseUrl)
+			.then(res => handleCharList(res))
+			.catch(err => console.log(err.response));
 	}, [baseUrl, charList]);
 
 	if (!charList) {
@@ -52,8 +65,18 @@ const RickAndMorty = () => {
 		);
 	} else {
 		return (
-			<div>
-				<h2 className="charTitle">Rick And Morty</h2>
+			<div className="charContainer">
+				<h2 className="charTitle">Personagens de Rick And Morty</h2>
+				<div className="searchBar">
+					<Input
+						type="text"
+						value={searchParam}
+						onChange={e => setSearchParam(e.target.value)}
+					/>
+					<Button type="primary" onClick={handleSearch}>
+						Pesquisar
+					</Button>
+				</div>
 				<div className="navButtons">
 					<Button onClick={handleSetPrevUrl}>
 						<LeftCircleTwoTone />
@@ -65,21 +88,20 @@ const RickAndMorty = () => {
 						<RightCircleTwoTone />
 					</Button>
 				</div>
-				<div className="charList">
+				<div className="charList" onClick={e => console.log(e)}>
 					{charList &&
-						charList.map(({ name, image }, index) => {
-							return (
-								<Card
-									key={index}
-									hoverable
-									cover={
-										<img alt={name} src={image} onClick={e => console.log(e)} />
-									}
-								>
+						charList.map(({ name, image }, index) => (
+							<div
+								key={index}
+								className="charCard"
+								data-name={name}
+								data-image={image}
+							>
+								<Card hoverable cover={<img alt={name} src={image} />}>
 									<Card.Meta title={name} />
 								</Card>
-							);
-						})}
+							</div>
+						))}
 				</div>
 			</div>
 		);
