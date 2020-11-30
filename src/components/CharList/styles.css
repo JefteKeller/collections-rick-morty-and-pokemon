@@ -1,0 +1,87 @@
+.charList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.charCard {
+  width: 40%;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.ant-card,
+.favoriteIcon {
+  pointer-events: none;
+}
+
+.ant-card-body {
+  padding: 1rem 0.1rem !important;
+}
+
+.ant-card-meta-title {
+  font-size: 10px !important
+}
+
+.divTitle {
+  width: 50%;
+  margin: 0 auto;
+
+}
+
+.favTitle {
+  color: #FFFFFF;
+  border-radius: 1rem;
+  background-color: rgba(47, 79, 79, 0.205);
+  margin: 1rem;
+}
+
+.favoriteIcon {
+  margin: 0.3rem auto;
+  background-color: #FFFFFF;
+  width: 25%;
+  border-radius: 1rem;
+}
+
+.favoriteIcon>img {
+  width: 60%;
+}
+
+@media screen and (min-width:500px) {
+
+  .divTitle {
+    width: 40%;
+  }
+
+  .charCard {
+    width: 30%;
+    margin: 0.5rem 1rem;
+  }
+}
+
+@media screen and (min-width:768px) {
+
+  .divTitle {
+    width: 30%;
+  }
+
+  .ant-card-meta-title {
+    font-size: 0.8em !important
+  }
+
+  .charCard {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width:1150px) {
+
+  .divTitle {
+    width: 20%;
+  }
+
+  .ant-card-meta-title {
+    font-size: 1em !important
+  }
+
+}

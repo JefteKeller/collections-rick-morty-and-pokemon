@@ -1,0 +1,38 @@
+.topMenu {
+  height: 7vh;
+}
+
+.iconImage {
+  width: 20vw;
+  height: 5vh;
+}
+
+@media screen and (min-width:500px) {
+
+  .topMenu {
+    height: 5vh;
+  }
+
+  .iconImage {
+    width: 15vw;
+    height: 4vh;
+  }
+
+}
+
+
+@media screen and (min-width:1000px) {
+
+  .iconImage {
+    width: 10vw;
+  }
+
+}
+
+@media screen and (min-width:1500px) {
+
+  .iconImage {
+    width: 8vw;
+  }
+
+}

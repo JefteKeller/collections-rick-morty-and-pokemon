@@ -1,0 +1,11 @@
+.navButtons {
+  display: flex;
+  margin: 0.5rem auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.navButtons>div {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

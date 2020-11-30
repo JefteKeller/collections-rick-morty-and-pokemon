@@ -1,23 +1,19 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { Card, Button, Input } from "antd";
-import {
-	LeftCircleTwoTone,
-	RightCircleTwoTone,
-	LoadingOutlined,
-} from "@ant-design/icons";
+import CharContainer from "../../components/CharContainer";
+import CharList from "../../components/CharList";
 
-const RickAndMorty = () => {
+import SearchBar from "../../components/SearchBar";
+import NavButtons from "../../components/NavButtons";
+
+const RickAndMorty = ({ favoritesList, setFavorites }) => {
 	const [charList, setCharList] = useState(null);
 	const [url, setUrl] = useState({
 		baseUrl: "https://rickandmortyapi.com/api/character/?page=1",
 		prevPage: "",
 		nextPage: "",
 	});
-	const [pageNum, setPageNum] = useState(0);
-	const [searchParam, setSearchParam] = useState("");
-
 	const { baseUrl, prevPage, nextPage } = url;
 
 	const handleCharList = res => {
@@ -25,87 +21,38 @@ const RickAndMorty = () => {
 		setUrl({ prevPage: res.data.info?.prev, nextPage: res.data.info?.next });
 	};
 
-	const handleSetPrevUrl = () => {
-		if (prevPage) {
-			setPageNum(pageNum - 1);
-			setUrl({ baseUrl: prevPage });
-		}
-	};
-
-	const handleSetNextUrl = () => {
-		if (nextPage) {
-			setPageNum(pageNum + 1);
-			setUrl({ baseUrl: nextPage });
-		}
-	};
-
-	const handleSearch = () => {
-		const searchText = searchParam.trim().replace(/\s/g, "+");
-		console.log(searchText);
-		setUrl({
-			...url,
-			baseUrl: `https://rickandmortyapi.com/api/character/?page=1&name=${searchText}`,
-		});
-	};
-
 	useEffect(() => {
+		console.log("loop");
 		axios
 			.get(baseUrl)
 			.then(res => handleCharList(res))
-			.catch(err => console.log(err.response));
+			.catch(err => console.log(err));
 	}, [baseUrl, charList]);
 
-	if (!charList) {
-		return (
-			<div className="charTitle">
-				<h2>Rick And Morty</h2>
-				<h3>Loading</h3>
-				<LoadingOutlined />
-			</div>
-		);
-	} else {
-		return (
-			<div className="charContainer">
-				<h2 className="charTitle">Personagens de Rick And Morty</h2>
-				<div className="searchBar">
-					<Input
-						type="text"
-						value={searchParam}
-						onChange={e => setSearchParam(e.target.value)}
-					/>
-					<Button type="primary" onClick={handleSearch}>
-						Pesquisar
-					</Button>
-				</div>
-				<div className="navButtons">
-					<Button onClick={handleSetPrevUrl}>
-						<LeftCircleTwoTone />
-						Anterior
-					</Button>{" "}
-					<span>{pageNum}</span>{" "}
-					<Button onClick={handleSetNextUrl}>
-						Proximo
-						<RightCircleTwoTone />
-					</Button>
-				</div>
-				<div className="charList" onClick={e => console.log(e)}>
-					{charList &&
-						charList.map(({ name, image }, index) => (
-							<div
-								key={index}
-								className="charCard"
-								data-name={name}
-								data-image={image}
-							>
-								<Card hoverable cover={<img alt={name} src={image} />}>
-									<Card.Meta title={name} />
-								</Card>
-							</div>
-						))}
-				</div>
-			</div>
-		);
-	}
+	const image = {
+		url:
+			"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1280px-Rick_and_Morty.svg.png",
+		alt: "Rick and Morty Logo",
+	};
+
+	const iconRickDefault =
+		"https://live.staticflickr.com/65535/50664861007_910aa74ab2_b.jpg";
+
+	const searchUrl = "https://rickandmortyapi.com/api/character/?page=1&name=";
+
+	return (
+		<CharContainer image={image} charList={charList}>
+			<SearchBar setUrl={setUrl} url={url} searchUrl={searchUrl} />
+			<NavButtons setUrl={setUrl} prevPage={prevPage} nextPage={nextPage} />
+
+			<CharList
+				charList={charList}
+				iconDefault={iconRickDefault}
+				favoritesList={favoritesList}
+				setFavorites={setFavorites}
+			/>
+		</CharContainer>
+	);
 };
 
 export default RickAndMorty;
