@@ -30,7 +30,7 @@ const CharList = ({
 				if (isPokemon) {
 					if (url) id = getImageID(url);
 
-					image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+					image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
 				}
 
 				return (

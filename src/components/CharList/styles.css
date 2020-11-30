@@ -10,6 +10,10 @@
   cursor: pointer;
 }
 
+.ant-card-cover>img {
+  height: 150px;
+}
+
 .ant-card,
 .favoriteIcon {
   pointer-events: none;
@@ -75,6 +79,10 @@
 }
 
 @media screen and (min-width:1150px) {
+
+  .ant-card-cover>img {
+    height: 200px;
+  }
 
   .divTitle {
     width: 20%;
