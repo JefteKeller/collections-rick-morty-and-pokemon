@@ -57,7 +57,7 @@ const Favorites = ({ favoritesList, setFavorites }) => {
 					const filteredList = favoritesList.filter(
 						({ name }) => name !== e.target.dataset.name
 					);
-					setFavorites([filteredList]);
+					setFavorites(filteredList);
 				}}
 			>
 				{favoritesList.map(({ name, image }, index) => (

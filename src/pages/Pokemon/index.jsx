@@ -50,7 +50,7 @@ const Pokemon = ({ favoritesList, setFavorites }) => {
 
 			<CharList
 				charList={charList}
-				isPokemon="true"
+				isPokemon
 				iconDefault={iconPokeDefault}
 				favoritesList={favoritesList}
 				setFavorites={setFavorites}

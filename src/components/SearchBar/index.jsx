@@ -7,7 +7,7 @@ const SearchBar = ({ setUrl, url, searchUrl }) => {
 	const [searchParam, setSearchParam] = useState("");
 
 	const handleSearch = () => {
-		const searchText = searchParam.trim().replace(/\s/g, "+");
+		const searchText = searchParam.toLowerCase().trim().replace(/\s/g, "+");
 		setUrl({
 			...url,
 			baseUrl: `${searchUrl}${searchText}`,
