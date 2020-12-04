@@ -1,21 +1,21 @@
 import "./styles.css";
 import { LoadingOutlined } from "@ant-design/icons";
 
-const CharContainer = ({ charList, image, children }) => {
+const CharContainer = ({ className, charList, image, alt, children }) => {
 	if (!charList) {
 		return (
-			<div className="charContainer">
+			<div className={className}>
 				<div className="titleImage">
-					<img alt={image.alt} src={image.url} />
+					<img alt={alt} src={image} />
 				</div>
 				<LoadingOutlined />
 			</div>
 		);
 	} else {
 		return (
-			<div className="charContainer">
+			<div className={className}>
 				<div className="titleImage">
-					<img alt={image.alt} src={image.url} />
+					<img alt={alt} src={image} />
 				</div>
 				{children}
 			</div>

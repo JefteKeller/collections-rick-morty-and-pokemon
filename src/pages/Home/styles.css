@@ -1,3 +1,23 @@
+#home {
+  height: 50vh;
+}
+
+.rickHomeBG {
+  background-image: url("https://images.hdqwalls.com/download/rick-and-morty-vaporwave-art-ex-3840x2400.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+}
+
+.pokeHomeBG {
+  background-image: url("https://cdn.statically.io/img/c4.wallpaperflare.com/wallpaper/927/247/737/pokemon-nature-pikachu-charmander-wallpaper-4664237548c040be06a0d9e164fe6dd4.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+}
+
 .homeImage {
   width: 80%;
   margin: 2rem;
@@ -6,5 +26,18 @@
 @media screen and (min-width:700px) {
   .homeImage {
     width: 40%;
+  }
+}
+
+@media screen and (min-width:1000px) {
+  #home {
+    height: 70vh;
+  }
+}
+
+
+@media screen and (min-width:1400px) {
+  #home {
+    height: 100vh;
   }
 }

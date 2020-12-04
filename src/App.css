@@ -13,5 +13,24 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white
+  color: white;
+}
+
+
+.rickBG {
+  background-image: url("https://images5.alphacoders.com/633/633151.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  min-height: 100vh;
+}
+
+.pokeBG {
+  background-image: url("https://wallpapercave.com/wp/wp2711114.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  min-height: 100vh;
 }

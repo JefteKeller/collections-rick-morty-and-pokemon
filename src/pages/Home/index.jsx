@@ -1,22 +1,35 @@
 import "./styles.css";
+import { rickImages, pokeImages } from "../../components/helper";
+
 import { Link } from "react-router-dom";
 
 const Home = () => {
+	const { pokeLogo } = pokeImages;
+	const { rickLogo } = rickImages;
+
+	const handleAddImage = page => {
+		document.getElementById("home").classList.add(page);
+	};
+
+	const handleRemoveImage = page => {
+		document.getElementById("home").classList.remove(page);
+	};
+
 	return (
-		<div className="home">
-			<Link to="/rick-and-morty">
-				<img
-					className="homeImage"
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1280px-Rick_and_Morty.svg.png"
-					alt="Rick and Morty Logo"
-				/>
+		<div id="home">
+			<Link
+				to="/rick-and-morty"
+				onMouseEnter={() => handleAddImage("rickHomeBG")}
+				onMouseLeave={() => handleRemoveImage("rickHomeBG")}
+			>
+				<img className="homeImage" src={rickLogo} alt="Rick and Morty Logo" />
 			</Link>
-			<Link to="pokemon">
-				<img
-					className="homeImage"
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png"
-					alt="Pokemon Logo"
-				/>
+			<Link
+				to="/pokemon"
+				onMouseEnter={() => handleAddImage("pokeHomeBG")}
+				onMouseLeave={() => handleRemoveImage("pokeHomeBG")}
+			>
+				<img className="homeImage" src={pokeLogo} alt="Pokemon Logo" />
 			</Link>
 		</div>
 	);

@@ -1,5 +1,6 @@
 import "./styles.css";
 import { Card } from "antd";
+import { MinusCircleTwoTone, PlusCircleTwoTone } from "@ant-design/icons";
 
 const CharList = ({
 	charList,
@@ -14,22 +15,24 @@ const CharList = ({
 		return id;
 	};
 
+	const handleFavorite = e => {
+		if (e.target.dataset.name) {
+			setFavorites([
+				...favoritesList,
+				{
+					name: e.target.dataset.name,
+					image: e.target.dataset.image,
+				},
+			]);
+		}
+	};
+
 	return (
-		<div
-			className="charList"
-			onClick={e => {
-				if (e.target.dataset.name) {
-					setFavorites([
-						...favoritesList,
-						{ name: e.target.dataset.name, image: e.target.dataset.image },
-					]);
-				}
-			}}
-		>
+		<div className="charList" onClick={handleFavorite}>
 			{charList.map(({ name, image, url, id }, index) => {
 				if (isPokemon) {
 					if (url) id = getImageID(url);
-
+					name = name.charAt(0).toUpperCase() + name.slice(1);
 					image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
 				}
 
@@ -44,6 +47,7 @@ const CharList = ({
 							<Card.Meta title={name} />
 						</Card>
 						<div className="favoriteIcon">
+							<PlusCircleTwoTone />
 							<img alt="Icon" src={iconDefault} />
 						</div>
 					</div>

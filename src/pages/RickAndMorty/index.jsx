@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+import { rickUrl, rickImages } from "../../components/helper";
+
 import CharContainer from "../../components/CharContainer";
 import CharList from "../../components/CharList";
 
@@ -8,9 +10,12 @@ import SearchBar from "../../components/SearchBar";
 import NavButtons from "../../components/NavButtons";
 
 const RickAndMorty = ({ favoritesList, setFavorites }) => {
+	const { rickBaseUrl, rickSearchUrl } = rickUrl;
+	const { rickLogo, rickIconDefault } = rickImages;
+
 	const [charList, setCharList] = useState(null);
 	const [url, setUrl] = useState({
-		baseUrl: "https://rickandmortyapi.com/api/character/?page=1",
+		baseUrl: rickBaseUrl,
 		prevPage: "",
 		nextPage: "",
 	});
@@ -18,36 +23,30 @@ const RickAndMorty = ({ favoritesList, setFavorites }) => {
 
 	const handleCharList = res => {
 		setCharList(res.data.results);
-		setUrl({ prevPage: res.data.info?.prev, nextPage: res.data.info?.next });
+		setUrl({ prevPage: res.data.info.prev, nextPage: res.data.info.next });
 	};
 
 	useEffect(() => {
-		console.log("loop");
+		console.log("Loop");
 		axios
 			.get(baseUrl)
 			.then(res => handleCharList(res))
 			.catch(err => console.log(err));
-	}, [baseUrl, charList]);
-
-	const image = {
-		url:
-			"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1280px-Rick_and_Morty.svg.png",
-		alt: "Rick and Morty Logo",
-	};
-
-	const iconRickDefault =
-		"https://live.staticflickr.com/65535/50664861007_910aa74ab2_b.jpg";
-
-	const searchUrl = "https://rickandmortyapi.com/api/character/?page=1&name=";
+	}, [baseUrl]);
 
 	return (
-		<CharContainer image={image} charList={charList}>
-			<SearchBar setUrl={setUrl} url={url} searchUrl={searchUrl} />
+		<CharContainer
+			className={"rickBG"}
+			image={rickLogo}
+			alt={"Rick And Morty Logo"}
+			charList={charList}
+		>
+			<SearchBar setUrl={setUrl} url={url} searchUrl={rickSearchUrl} />
 			<NavButtons setUrl={setUrl} prevPage={prevPage} nextPage={nextPage} />
 
 			<CharList
 				charList={charList}
-				iconDefault={iconRickDefault}
+				iconDefault={rickIconDefault}
 				favoritesList={favoritesList}
 				setFavorites={setFavorites}
 			/>
