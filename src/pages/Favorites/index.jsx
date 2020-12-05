@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
-import { Card } from "antd";
-import { MinusCircleTwoTone, PlusCircleTwoTone } from "@ant-design/icons";
+import { Card, Button } from "antd";
+import { MinusCircleTwoTone } from "@ant-design/icons";
 
 import "../../components/CharList/styles.css";
 
@@ -9,18 +9,32 @@ import CharContainer from "../../components/CharContainer";
 
 import { setImages } from "./helper";
 
-const Favorites = ({ favoritesList, setFavorites }) => {
+const Favorites = () => {
 	const location = useLocation();
+	const history = useHistory();
 
 	const pageImages = setImages(location);
+	const {
+		logo,
+		icon,
+		backgroundClass,
+		favoritesToken,
+		returnPath,
+	} = pageImages;
 
-	const { logo, icon, backgroundClass } = pageImages;
+	const favoritesList = JSON.parse(localStorage.getItem(favoritesToken)) || [];
 
-	const handleFavorite = e => {
+	const handleFavorites = e => {
+		if (!e.target.dataset.name) {
+			return;
+		}
+
 		const filteredList = favoritesList.filter(
 			({ name }) => name !== e.target.dataset.name
 		);
-		setFavorites(filteredList);
+
+		localStorage.setItem(favoritesToken, JSON.stringify(filteredList));
+		history.push([location.pathname]);
 	};
 
 	return (
@@ -32,7 +46,12 @@ const Favorites = ({ favoritesList, setFavorites }) => {
 			<div className="divTitle">
 				<h3 className="favTitle">Favoritos</h3>
 			</div>
-			<div className="charList" onClick={handleFavorite}>
+			<div>
+				<Button type="primary" onClick={() => history.push(returnPath)}>
+					Retornar
+				</Button>
+			</div>
+			<div className="charList" onClick={handleFavorites}>
 				{favoritesList.map(({ name, image }, index) => (
 					<div
 						key={index}
@@ -44,7 +63,7 @@ const Favorites = ({ favoritesList, setFavorites }) => {
 							<Card.Meta title={name} />
 						</Card>
 						<div className="favoriteIcon">
-							<PlusCircleTwoTone />
+							<MinusCircleTwoTone />
 							<img alt="Icon" src={icon} />
 						</div>
 					</div>

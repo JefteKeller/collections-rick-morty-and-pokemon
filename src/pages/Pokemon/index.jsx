@@ -9,7 +9,7 @@ import CharList from "../../components/CharList";
 import SearchBar from "../../components/SearchBar";
 import NavButtons from "../../components/NavButtons";
 
-const Pokemon = ({ favoritesList, setFavorites }) => {
+const Pokemon = () => {
 	const { pokeLogo, pokeIconDefault } = pokeImages;
 	const { pokeBaseUrl, pokeSearchUrl } = pokeUrl;
 
@@ -31,13 +31,32 @@ const Pokemon = ({ favoritesList, setFavorites }) => {
 	};
 
 	useEffect(() => {
-		console.log("Loop");
-
 		axios
 			.get(baseUrl)
 			.then(res => handleCharList(res))
 			.catch(err => console.log(err));
 	}, [baseUrl]);
+
+	const handleFavorites = e => {
+		console.log(e.target.dataset.name);
+		if (!e.target.dataset.name) {
+			return;
+		}
+		const favoritesList =
+			JSON.parse(localStorage.getItem("pokeFavorites")) || [];
+
+		if (favoritesList.some(({ name }) => name === e.target.dataset.name)) {
+			return;
+		}
+
+		const newFavorite = {
+			name: e.target.dataset.name,
+			image: e.target.dataset.image,
+		};
+
+		const newFavoritesList = [...favoritesList, newFavorite];
+		localStorage.setItem("pokeFavorites", JSON.stringify(newFavoritesList));
+	};
 
 	return (
 		<CharContainer
@@ -53,8 +72,7 @@ const Pokemon = ({ favoritesList, setFavorites }) => {
 				charList={charList}
 				isPokemon
 				iconDefault={pokeIconDefault}
-				favoritesList={favoritesList}
-				setFavorites={setFavorites}
+				handleFavorites={handleFavorites}
 			/>
 		</CharContainer>
 	);

@@ -18,7 +18,7 @@ export const pokeImages = {
 	pokeIconDefault:
 		"https://live.staticflickr.com/65535/50664861037_ee7d8a9ac5_b.jpg",
 	pokeIconFavorite:
-		"https://live.staticflickr.com/65535/50664039158_8c0c07364f_b.jpg",
+		"https://www.pngkit.com/png/detail/783-7831178_pokeball-pokeball-pixel-png.png",
 };
 
 export const pokeUrl = {

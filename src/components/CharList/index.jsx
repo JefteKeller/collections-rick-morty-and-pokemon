@@ -1,34 +1,16 @@
 import "./styles.css";
 import { Card } from "antd";
-import { MinusCircleTwoTone, PlusCircleTwoTone } from "@ant-design/icons";
+import { PlusCircleTwoTone } from "@ant-design/icons";
 
-const CharList = ({
-	charList,
-	isPokemon,
-	iconDefault,
-	favoritesList,
-	setFavorites,
-}) => {
+const CharList = ({ charList, isPokemon, iconDefault, handleFavorites }) => {
 	const getImageID = url => {
 		const brokenUrl = url.split("/");
 		const id = brokenUrl[brokenUrl.length - 2];
 		return id;
 	};
 
-	const handleFavorite = e => {
-		if (e.target.dataset.name) {
-			setFavorites([
-				...favoritesList,
-				{
-					name: e.target.dataset.name,
-					image: e.target.dataset.image,
-				},
-			]);
-		}
-	};
-
 	return (
-		<div className="charList" onClick={handleFavorite}>
+		<div className="charList" onClick={handleFavorites}>
 			{charList.map(({ name, image, url, id }, index) => {
 				if (isPokemon) {
 					if (url) id = getImageID(url);

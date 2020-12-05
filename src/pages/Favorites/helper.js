@@ -9,6 +9,8 @@ export const setImages = location => {
 			logo: rickLogo,
 			icon: rickIconFavorite,
 			backgroundClass: "rickBG",
+			favoritesToken: "rickFavorites",
+			returnPath: "/rick-and-morty",
 		};
 
 		return rickImages;
@@ -19,6 +21,8 @@ export const setImages = location => {
 			logo: pokeLogo,
 			icon: pokeIconFavorite,
 			backgroundClass: "pokeBG",
+			favoritesToken: "pokeFavorites",
+			returnPath: "/pokemon",
 		};
 
 		return pokeImages;

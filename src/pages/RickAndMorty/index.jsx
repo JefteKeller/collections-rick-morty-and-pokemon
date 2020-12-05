@@ -9,7 +9,7 @@ import CharList from "../../components/CharList";
 import SearchBar from "../../components/SearchBar";
 import NavButtons from "../../components/NavButtons";
 
-const RickAndMorty = ({ favoritesList, setFavorites }) => {
+const RickAndMorty = () => {
 	const { rickBaseUrl, rickSearchUrl } = rickUrl;
 	const { rickLogo, rickIconDefault } = rickImages;
 
@@ -27,12 +27,31 @@ const RickAndMorty = ({ favoritesList, setFavorites }) => {
 	};
 
 	useEffect(() => {
-		console.log("Loop");
 		axios
 			.get(baseUrl)
 			.then(res => handleCharList(res))
 			.catch(err => console.log(err));
 	}, [baseUrl]);
+
+	const handleFavorites = e => {
+		if (!e.target.dataset.name) {
+			return;
+		}
+		const favoritesList =
+			JSON.parse(localStorage.getItem("rickFavorites")) || [];
+
+		if (favoritesList.some(({ name }) => name === e.target.dataset.name)) {
+			return;
+		}
+
+		const newFavorite = {
+			name: e.target.dataset.name,
+			image: e.target.dataset.image,
+		};
+
+		const newFavoritesList = [...favoritesList, newFavorite];
+		localStorage.setItem("rickFavorites", JSON.stringify(newFavoritesList));
+	};
 
 	return (
 		<CharContainer
@@ -47,8 +66,7 @@ const RickAndMorty = ({ favoritesList, setFavorites }) => {
 			<CharList
 				charList={charList}
 				iconDefault={rickIconDefault}
-				favoritesList={favoritesList}
-				setFavorites={setFavorites}
+				handleFavorites={handleFavorites}
 			/>
 		</CharContainer>
 	);
