@@ -23,10 +23,12 @@ const Pokemon = () => {
 
 	const handleCharList = res => {
 		if (!res.data.results) {
-			setCharList([res.data]);
+			setTimeout(() => setCharList([res.data]), 4000);
 		} else {
-			setCharList(res.data.results);
-			setUrl({ prevPage: res.data.previous, nextPage: res.data.next });
+			setTimeout(() => {
+				setCharList(res.data.results);
+				setUrl({ prevPage: res.data.previous, nextPage: res.data.next });
+			}, 4000);
 		}
 	};
 
@@ -60,7 +62,8 @@ const Pokemon = () => {
 
 	return (
 		<CharContainer
-			className={"pokeBG"}
+			isPokemon
+			className={"pokeMainBG"}
 			image={pokeLogo}
 			alt={"Pokemon Logo"}
 			charList={charList}

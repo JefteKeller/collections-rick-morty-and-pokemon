@@ -16,21 +16,27 @@
   color: white;
 }
 
-
-.rickBG {
+.rickMainBG {
   background-image: url("https://images5.alphacoders.com/633/633151.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: top;
   min-height: 100vh;
+  width: 100%;
 }
 
-.pokeBG {
+.pokeMainBG {
   background-image: url("https://wallpapercave.com/wp/wp2711114.gif");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: top;
   min-height: 100vh;
+  width: 100%;
+}
+
+.returnButton {
+  width: fit-content;
+  margin: 0 auto;
 }

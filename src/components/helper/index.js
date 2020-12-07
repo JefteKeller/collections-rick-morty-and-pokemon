@@ -1,10 +1,13 @@
+export const homeIcon =
+	"https://live.staticflickr.com/65535/50687806797_09fe861702_b.jpg";
+
 export const rickImages = {
 	rickLogo:
 		"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1280px-Rick_and_Morty.svg.png",
 	rickIconDefault:
-		"https://live.staticflickr.com/65535/50664861007_910aa74ab2_b.jpg",
+		"https://live.staticflickr.com/65535/50688190866_1c1ff75471_s.jpg",
 	rickIconFavorite:
-		"https://live.staticflickr.com/65535/50664039138_944f2d2c71_b.jpg",
+		"https://live.staticflickr.com/65535/50687442703_a02c313c47_n.jpg",
 };
 
 export const rickUrl = {
@@ -16,9 +19,9 @@ export const pokeImages = {
 	pokeLogo:
 		"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2000px-International_Pok%C3%A9mon_logo.svg.png",
 	pokeIconDefault:
-		"https://live.staticflickr.com/65535/50664861037_ee7d8a9ac5_b.jpg",
+		"https://i.gifer.com/origin/28/2860d2d8c3a1e402e0fc8913cd92cd7a_w200.gif",
 	pokeIconFavorite:
-		"https://www.pngkit.com/png/detail/783-7831178_pokeball-pokeball-pixel-png.png",
+		"https://live.staticflickr.com/65535/50687414293_304dfb1be4_c.jpg",
 };
 
 export const pokeUrl = {

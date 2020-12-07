@@ -2,11 +2,9 @@ import "./styles.css";
 import { rickImages, pokeImages } from "../../components/helper";
 
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Home = () => {
-	const { pokeLogo } = pokeImages;
-	const { rickLogo } = rickImages;
-
 	const handleAddImage = page => {
 		document.getElementById("home").classList.add(page);
 	};
@@ -15,23 +13,51 @@ const Home = () => {
 		document.getElementById("home").classList.remove(page);
 	};
 
+	const { pokeLogo } = pokeImages;
+	const { rickLogo } = rickImages;
+
 	return (
-		<div id="home">
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 1 }}
+			exit={{ opacity: 0 }}
+			id="home"
+		>
 			<Link
 				to="/rick-and-morty"
-				onMouseEnter={() => handleAddImage("rickHomeBG")}
-				onMouseLeave={() => handleRemoveImage("rickHomeBG")}
+				onMouseEnter={() => handleAddImage("rickHomeHovered")}
+				onMouseLeave={() => handleRemoveImage("rickHomeHovered")}
 			>
-				<img className="homeImage" src={rickLogo} alt="Rick and Morty Logo" />
+				<motion.img
+					whileHover={{
+						scale: 1.1,
+						transition: { duration: 0.2 },
+					}}
+					whileTap={{ scale: 0.8, transition: { duration: 0.2 } }}
+					className="homeImage"
+					src={rickLogo}
+					alt="Rick and Morty Logo"
+				/>
 			</Link>
+
 			<Link
 				to="/pokemon"
-				onMouseEnter={() => handleAddImage("pokeHomeBG")}
-				onMouseLeave={() => handleRemoveImage("pokeHomeBG")}
+				onMouseEnter={() => handleAddImage("pokeHomeHovered")}
+				onMouseLeave={() => handleRemoveImage("pokeHomeHovered")}
 			>
-				<img className="homeImage" src={pokeLogo} alt="Pokemon Logo" />
+				<motion.img
+					whileHover={{
+						scale: 1.1,
+						transition: { duration: 0.2 },
+					}}
+					whileTap={{ scale: 0.8, transition: { duration: 0.2 } }}
+					className="homeImage"
+					src={pokeLogo}
+					alt="Pokemon Logo"
+				/>
 			</Link>
-		</div>
+		</motion.div>
 	);
 };
 

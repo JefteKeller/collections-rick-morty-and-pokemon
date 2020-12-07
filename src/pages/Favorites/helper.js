@@ -8,7 +8,9 @@ export const setImages = location => {
 		const rickImages = {
 			logo: rickLogo,
 			icon: rickIconFavorite,
-			backgroundClass: "rickBG",
+			noFavImage:
+				"https://i.pinimg.com/originals/4a/06/ef/4a06efb5a2f39feaa2f81b9f3d179a94.gif",
+			backgroundClass: "rickMainBG",
 			favoritesToken: "rickFavorites",
 			returnPath: "/rick-and-morty",
 		};
@@ -20,7 +22,9 @@ export const setImages = location => {
 		const pokeImages = {
 			logo: pokeLogo,
 			icon: pokeIconFavorite,
-			backgroundClass: "pokeBG",
+			noFavImage:
+				"https://i.pinimg.com/originals/6e/4e/03/6e4e030b11b113f046a2a0be16f9c9ee.gif",
+			backgroundClass: "pokeMainBG",
 			favoritesToken: "pokeFavorites",
 			returnPath: "/pokemon",
 		};

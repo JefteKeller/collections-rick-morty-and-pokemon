@@ -1,4 +1,5 @@
 import "./styles.css";
+import { motion } from "framer-motion";
 
 import { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
@@ -39,12 +40,21 @@ const NavButtons = ({ setUrl, prevPage, nextPage }) => {
 					<RightCircleTwoTone />
 				</Button>
 			</div>
-			<Button
-				type="primary"
-				onClick={() => history.push(`${location.pathname}/favorites`)}
+			<motion.div
+				whileHover={{
+					scale: 1.1,
+					transition: { duration: 0.2 },
+				}}
+				whileTap={{ scale: 0.8, transition: { duration: 0.2 } }}
+				className="returnButton"
 			>
-				Favoritos
-			</Button>
+				<Button
+					type="primary"
+					onClick={() => history.push(`${location.pathname}/favorites`)}
+				>
+					Favoritos
+				</Button>
+			</motion.div>
 		</div>
 	);
 };

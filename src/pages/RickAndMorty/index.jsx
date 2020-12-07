@@ -22,8 +22,10 @@ const RickAndMorty = () => {
 	const { baseUrl, prevPage, nextPage } = url;
 
 	const handleCharList = res => {
-		setCharList(res.data.results);
-		setUrl({ prevPage: res.data.info.prev, nextPage: res.data.info.next });
+		setTimeout(() => {
+			setCharList(res.data.results);
+			setUrl({ prevPage: res.data.info.prev, nextPage: res.data.info.next });
+		}, 3000);
 	};
 
 	useEffect(() => {
@@ -55,7 +57,8 @@ const RickAndMorty = () => {
 
 	return (
 		<CharContainer
-			className={"rickBG"}
+			isRick
+			className={"rickMainBG"}
 			image={rickLogo}
 			alt={"Rick And Morty Logo"}
 			charList={charList}

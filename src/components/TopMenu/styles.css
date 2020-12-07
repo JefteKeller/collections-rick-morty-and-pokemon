@@ -1,16 +1,29 @@
 .topMenu {
-  height: 7vh;
+  height: 5vh;
+  min-height: 40px;
+}
+
+.homeIcon {
+  width: 5vw;
+  height: 3vh;
+  min-height: 20px;
 }
 
 .iconImage {
   width: 20vw;
   height: 5vh;
+  min-height: 20px;
 }
 
 @media screen and (min-width:500px) {
 
   .topMenu {
     height: 5vh;
+  }
+
+  .homeIcon {
+    width: 3vw;
+    height: 2vh;
   }
 
   .iconImage {
@@ -23,6 +36,11 @@
 
 @media screen and (min-width:1000px) {
 
+  .homeIcon {
+    width: 2.2vw;
+    height: 3vh;
+  }
+
   .iconImage {
     width: 10vw;
   }
@@ -30,6 +48,11 @@
 }
 
 @media screen and (min-width:1500px) {
+
+  .homeIcon {
+    width: 1.5vw;
+    height: 3vh;
+  }
 
   .iconImage {
     width: 8vw;

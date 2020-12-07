@@ -2,6 +2,8 @@ import "./styles.css";
 import { Card } from "antd";
 import { PlusCircleTwoTone } from "@ant-design/icons";
 
+import { motion } from "framer-motion";
+
 const CharList = ({ charList, isPokemon, iconDefault, handleFavorites }) => {
 	const getImageID = url => {
 		const brokenUrl = url.split("/");
@@ -19,7 +21,12 @@ const CharList = ({ charList, isPokemon, iconDefault, handleFavorites }) => {
 				}
 
 				return (
-					<div
+					<motion.div
+						whileHover={{
+							scale: 1.1,
+							transition: { duration: 0.2 },
+						}}
+						whileTap={{ scale: 0.8, transition: { duration: 0.2 } }}
 						key={index}
 						className="charCard"
 						data-name={name}
@@ -32,7 +39,7 @@ const CharList = ({ charList, isPokemon, iconDefault, handleFavorites }) => {
 							<PlusCircleTwoTone />
 							<img alt="Icon" src={iconDefault} />
 						</div>
-					</div>
+					</motion.div>
 				);
 			})}
 		</div>

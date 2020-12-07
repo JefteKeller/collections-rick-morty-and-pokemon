@@ -1,12 +1,89 @@
 .titleImage img {
   width: 50%;
+  margin-top: 2rem;
 }
 
+.rickLoading img {
+  width: 60%;
+  margin: 2rem;
+  border-radius: 10rem;
+}
+
+.pokeLoading img {
+  width: 50%;
+  margin: 2rem;
+  border-radius: 10rem;
+}
+
+.noFav {
+  margin-top: 2rem;
+}
+
+.noFav h5 {
+  width: 60vw;
+  background-color: rgba(0, 0, 0, 0.685);
+  color: aliceblue;
+  padding: 0.8rem;
+  border-radius: 1.5rem;
+}
+
+.noFav img {
+  width: 40vw;
+  border-radius: 1rem;
+}
+
+.ant-card {
+  border: 0;
+  border-radius: 2rem;
+  background-color: rgba(0, 0, 0, 0.500);
+}
+
+.ant-card-body {
+  background-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+@media screen and (min-width:768px) {
+
+  .rickLoading img {
+    width: 50%;
+  }
+
+  .pokeLoading img {
+    width: 40%;
+  }
+
+  .noFav h5 {
+    width: 45vw;
+  }
+
+  .noFav img {
+    width: 25vw;
+  }
+
+}
 
 @media screen and (min-width:1000px) {
 
   .titleImage img {
     width: 40%;
+  }
+
+  .rickLoading img {
+    width: 40%;
+  }
+
+  .pokeLoading img {
+    width: 30%;
+  }
+
+  .noFav h5 {
+    width: 35vw;
+  }
+
+  .noFav img {
+    width: 20vw;
   }
 
 }
@@ -15,6 +92,22 @@
 
   .titleImage img {
     width: 30%;
+  }
+
+  .rickLoading img {
+    width: 30%;
+  }
+
+  .pokeLoading img {
+    width: 25%;
+  }
+
+  .noFav h5 {
+    width: 30vw;
+  }
+
+  .noFav img {
+    width: 15vw;
   }
 
 }

@@ -1,13 +1,13 @@
 import { useLocation, useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
+
+import { setImages } from "./helper";
 
 import { Card, Button } from "antd";
 import { MinusCircleTwoTone } from "@ant-design/icons";
 
-import "../../components/CharList/styles.css";
-
 import CharContainer from "../../components/CharContainer";
-
-import { setImages } from "./helper";
+import "../../components/CharList/styles.css";
 
 const Favorites = () => {
 	const location = useLocation();
@@ -17,6 +17,7 @@ const Favorites = () => {
 	const {
 		logo,
 		icon,
+		noFavImage,
 		backgroundClass,
 		favoritesToken,
 		returnPath,
@@ -46,28 +47,47 @@ const Favorites = () => {
 			<div className="divTitle">
 				<h3 className="favTitle">Favoritos</h3>
 			</div>
-			<div>
+			<motion.div
+				whileHover={{
+					scale: 1.1,
+					transition: { duration: 0.2 },
+				}}
+				whileTap={{ scale: 0.8, transition: { duration: 0.2 } }}
+				className="returnButton"
+			>
 				<Button type="primary" onClick={() => history.push(returnPath)}>
 					Retornar
 				</Button>
-			</div>
+			</motion.div>
 			<div className="charList" onClick={handleFavorites}>
-				{favoritesList.map(({ name, image }, index) => (
-					<div
-						key={index}
-						className="charCard"
-						data-name={name}
-						data-image={image}
-					>
-						<Card cover={<img alt={name} src={image} />}>
-							<Card.Meta title={name} />
-						</Card>
-						<div className="favoriteIcon">
-							<MinusCircleTwoTone />
-							<img alt="Icon" src={icon} />
-						</div>
+				{favoritesList.length > 0 ? (
+					favoritesList.map(({ name, image }, index) => (
+						<motion.div
+							whileHover={{
+								scale: 1.1,
+								transition: { duration: 0.2 },
+							}}
+							whileTap={{ scale: 0.8, transition: { duration: 0.2 } }}
+							key={index}
+							className="charCard"
+							data-name={name}
+							data-image={image}
+						>
+							<Card cover={<img alt={name} src={image} />}>
+								<Card.Meta title={name} />
+							</Card>
+							<div className="favoriteIcon">
+								<MinusCircleTwoTone />
+								<img alt="Icon" src={icon} />
+							</div>
+						</motion.div>
+					))
+				) : (
+					<div className="noFav">
+						<h5>Você não tem Favoritos</h5>
+						<img alt="Nenhum Favorito" src={noFavImage} />
 					</div>
-				))}
+				)}
 			</div>
 		</CharContainer>
 	);
