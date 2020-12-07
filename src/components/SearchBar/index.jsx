@@ -14,12 +14,20 @@ const SearchBar = ({ setUrl, url, searchUrl }) => {
 		});
 	};
 
+	const handleKeyPress = e => {
+		if (e.key === "Enter") {
+			setSearchParam(e.target.value);
+			handleSearch();
+		}
+	};
+
 	return (
 		<div className="searchBar">
 			<Input
 				type="text"
 				value={searchParam}
 				onChange={e => setSearchParam(e.target.value)}
+				onKeyDown={handleKeyPress}
 			/>
 			<Button type="primary" onClick={handleSearch}>
 				Pesquisar

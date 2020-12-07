@@ -1,10 +1,19 @@
 import "./styles.css";
-import { rickImages, pokeImages } from "../../components/helper";
+import {
+	getQueryStrings,
+	rickImages,
+	pokeImages,
+} from "../../components/helper";
 
-import { Link } from "react-router-dom";
+import { useLocation, useHistory, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Home = () => {
+	const location = useLocation();
+	const history = useHistory();
+
+	getQueryStrings(location, history);
+
 	const handleAddImage = page => {
 		document.getElementById("home").classList.add(page);
 	};

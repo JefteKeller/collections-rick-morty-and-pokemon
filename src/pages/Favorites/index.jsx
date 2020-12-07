@@ -1,10 +1,12 @@
 import { useLocation, useHistory } from "react-router-dom";
-import { motion } from "framer-motion";
+import { getQueryStrings } from "../../components/helper";
 
 import { setImages } from "./helper";
 
 import { Card, Button } from "antd";
 import { MinusCircleTwoTone } from "@ant-design/icons";
+
+import { motion } from "framer-motion";
 
 import CharContainer from "../../components/CharContainer";
 import "../../components/CharList/styles.css";
@@ -12,6 +14,8 @@ import "../../components/CharList/styles.css";
 const Favorites = () => {
 	const location = useLocation();
 	const history = useHistory();
+
+	getQueryStrings(location, history);
 
 	const pageImages = setImages(location);
 	const {

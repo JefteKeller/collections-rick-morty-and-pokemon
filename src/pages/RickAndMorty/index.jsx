@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { rickUrl, rickImages } from "../../components/helper";
+import { useLocation, useHistory } from "react-router-dom";
+import { getQueryStrings, rickUrl, rickImages } from "../../components/helper";
 
 import CharContainer from "../../components/CharContainer";
 import CharList from "../../components/CharList";
@@ -10,6 +11,11 @@ import SearchBar from "../../components/SearchBar";
 import NavButtons from "../../components/NavButtons";
 
 const RickAndMorty = () => {
+	const location = useLocation();
+	const history = useHistory();
+
+	getQueryStrings(location, history);
+
 	const { rickBaseUrl, rickSearchUrl } = rickUrl;
 	const { rickLogo, rickIconDefault } = rickImages;
 

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import { pokeUrl, pokeImages } from "../../components/helper";
+import { useLocation, useHistory } from "react-router-dom";
+import { getQueryStrings, pokeUrl, pokeImages } from "../../components/helper";
 
 import CharContainer from "../../components/CharContainer";
 import CharList from "../../components/CharList";
@@ -10,6 +11,11 @@ import SearchBar from "../../components/SearchBar";
 import NavButtons from "../../components/NavButtons";
 
 const Pokemon = () => {
+	const location = useLocation();
+	const history = useHistory();
+
+	getQueryStrings(location, history);
+
 	const { pokeLogo, pokeIconDefault } = pokeImages;
 	const { pokeBaseUrl, pokeSearchUrl } = pokeUrl;
 
@@ -23,12 +29,12 @@ const Pokemon = () => {
 
 	const handleCharList = res => {
 		if (!res.data.results) {
-			setTimeout(() => setCharList([res.data]), 4000);
+			setCharList([res.data]);
 		} else {
 			setTimeout(() => {
 				setCharList(res.data.results);
 				setUrl({ prevPage: res.data.previous, nextPage: res.data.next });
-			}, 4000);
+			}, 3000);
 		}
 	};
 
@@ -40,7 +46,6 @@ const Pokemon = () => {
 	}, [baseUrl]);
 
 	const handleFavorites = e => {
-		console.log(e.target.dataset.name);
 		if (!e.target.dataset.name) {
 			return;
 		}

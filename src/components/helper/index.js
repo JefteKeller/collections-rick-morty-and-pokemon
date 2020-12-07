@@ -1,3 +1,20 @@
+export const getQueryStrings = (location, history) => {
+	if (location.search) {
+		const queryString = location.search.split("=");
+		const queryParam = queryString[0].slice(1);
+		const searchQuery = queryString[1];
+
+		if (queryParam === "list") {
+			if (searchQuery === "pokemon") {
+				history.push("/pokemon");
+			}
+			if (searchQuery === "rick") {
+				history.push("/rick-and-morty");
+			}
+		}
+	}
+};
+
 export const homeIcon =
 	"https://live.staticflickr.com/65535/50687806797_09fe861702_b.jpg";
 
