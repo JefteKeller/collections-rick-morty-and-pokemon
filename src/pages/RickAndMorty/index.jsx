@@ -31,7 +31,7 @@ const RickAndMorty = () => {
 		setTimeout(() => {
 			setCharList(res.data.results);
 			setUrl({ prevPage: res.data.info.prev, nextPage: res.data.info.next });
-		}, 3000);
+		}, 2000);
 	};
 
 	useEffect(() => {
@@ -69,7 +69,12 @@ const RickAndMorty = () => {
 			alt={"Rick And Morty Logo"}
 			charList={charList}
 		>
-			<SearchBar setUrl={setUrl} url={url} searchUrl={rickSearchUrl} />
+			<SearchBar
+				setCharList={setCharList}
+				setUrl={setUrl}
+				url={url}
+				searchUrl={rickSearchUrl}
+			/>
 			<NavButtons setUrl={setUrl} prevPage={prevPage} nextPage={nextPage} />
 
 			<CharList

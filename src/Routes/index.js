@@ -1,35 +1,28 @@
 import { Switch, Route } from "react-router-dom";
-import { AnimateSharedLayout } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
+import Chart from "../pages/Chart";
 
 import RickAndMorty from "../pages/RickAndMorty";
 import Pokemon from "../pages/Pokemon";
 
 const Routes = () => {
 	return (
-		<AnimateSharedLayout>
+		<AnimatePresence>
 			<Switch>
-				<Route exact path="/">
-					<Home />
-				</Route>
+				<Route exact path="/" component={Home} />
 
-				<Route exact path="/rick-and-morty">
-					<RickAndMorty />
-				</Route>
-				<Route exact path="/rick-and-morty/favorites">
-					<Favorites />
-				</Route>
+				<Route exact path="/rick-and-morty" component={RickAndMorty} />
+				<Route exact path="/rick-and-morty/favorites" component={Favorites} />
 
-				<Route exact path="/pokemon">
-					<Pokemon />
-				</Route>
-				<Route exact path="/pokemon/favorites">
-					<Favorites />
-				</Route>
+				<Route exact path="/pokemon" component={Pokemon} />
+				<Route exact path="/pokemon/favorites" component={Favorites} />
+
+				<Route exact path="/chart" component={Chart} />
 			</Switch>
-		</AnimateSharedLayout>
+		</AnimatePresence>
 	);
 };
 

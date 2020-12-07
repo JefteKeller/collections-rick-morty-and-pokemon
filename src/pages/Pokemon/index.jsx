@@ -73,7 +73,12 @@ const Pokemon = () => {
 			alt={"Pokemon Logo"}
 			charList={charList}
 		>
-			<SearchBar setUrl={setUrl} url={url} searchUrl={pokeSearchUrl} />
+			<SearchBar
+				setCharList={setCharList}
+				setUrl={setUrl}
+				url={url}
+				searchUrl={pokeSearchUrl}
+			/>
 			<NavButtons setUrl={setUrl} prevPage={prevPage} nextPage={nextPage} />
 
 			<CharList

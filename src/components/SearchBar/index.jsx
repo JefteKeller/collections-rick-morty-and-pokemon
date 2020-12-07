@@ -3,15 +3,19 @@ import { Button, Input } from "antd";
 
 import { useState } from "react";
 
-const SearchBar = ({ setUrl, url, searchUrl }) => {
+const SearchBar = ({ setCharList, setUrl, url, searchUrl }) => {
 	const [searchParam, setSearchParam] = useState("");
 
 	const handleSearch = () => {
 		const searchText = searchParam.toLowerCase().trim().replace(/\s/g, "+");
-		setUrl({
-			...url,
-			baseUrl: `${searchUrl}${searchText}`,
-		});
+		setCharList(null);
+
+		setTimeout(() => {
+			setUrl({
+				...url,
+				baseUrl: `${searchUrl}${searchText}`,
+			});
+		}, 1000);
 	};
 
 	const handleKeyPress = e => {
